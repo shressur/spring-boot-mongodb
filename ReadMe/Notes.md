@@ -286,3 +286,58 @@
     Default database path on MacOSX: 
         /usr/local/var/mongodb
 </pre>
+<pre>
+    You can do this:
+    -----------------
+    @RequestParam(value="paramOne", required=true)
+    @RequestParam(name="paramOne", required=true)
+    @RequestParam(value="paramOne", required=true, name="paramOne")
+    
+    But not this:
+    --------------
+    @RequestParam(value="paramOne", required=true, name="paramNotOne")
+</pre>
+<pre>
+    repository.save() => overwrites existing data/document
+    wrestlerRepository.insert() => adds new data/document
+</pre>
+<pre>
+    Test API with Postman
+    1. CREATE:
+        POST: localhost:8080/new-wrestler
+        {
+            "name":"Trish Stratus",
+            "finisher": "Springboard Bulldog",
+            "isActive":false,
+            "gender":"Female"
+        }
+        POST: localhost:8080/new-wrestler-many
+        [{
+            "name":"Goldberg",
+            "finisher": "Jack Hammer",
+            "isActive":false,
+            "gender":"Male"
+        },
+        {
+            "name":"The Rock",
+            "finisher": "The Rock Bottom",
+            "isActive":false,
+            "gender":"Male"
+        }]
+    2. READ
+        GET: localhost:8080/view-wrestlers
+        GET: localhost:8080/view-wrestler
+            param => id     &lt;generated_id&gt;
+    3. UPDATE
+        PUT: localhost:8080/update-wrestler
+        {
+            "id":"<generated_id>",
+            "name":"John Cena",
+            "finisher": "AA",
+            "isActive":true,
+            "gender":"Male"
+        }
+    4. DELETE
+        DELETE: localhost:8080/delete-wrestler
+            param => id     &lt;generated_id&gt;
+</pre>

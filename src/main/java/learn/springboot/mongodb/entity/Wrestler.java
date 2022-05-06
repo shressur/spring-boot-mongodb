@@ -15,8 +15,7 @@ import java.math.BigInteger;
 @AllArgsConstructor
 @NoArgsConstructor
 
-//@Document or
-@Document(collection = "wrestlers")
+@Document
 public class Wrestler {
     @Id
     //use BigInteger or String or ObjectId because long or int won't work:
